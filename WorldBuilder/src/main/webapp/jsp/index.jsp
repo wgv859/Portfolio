@@ -11,12 +11,13 @@
     </head>
     <body>
         <div class="container">
-            <h1>Spring MVC Application from Archetype</h1>
+            <h1>World Builder</h1>
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
-                	<li role="presentation" class="active"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-                	<li role="presentation"><a href="${pageContext.request.contextPath}/hello/sayhi">Hello Controller</a></li>
+                	<li role="presentation" class="active"><a href="${pageContext.request.contextPath}/index">Home</a></li>
+                        <li role="presentation"><a href="${pageContext.request.contextPath}/worlds">Worlds</a></li>
+                        <li role="presentation"><a href="${pageContext.request.contextPath}/displaySearchPage">SEARCH</a></li>
                 </ul>    
             </div>
             <h2>Home Page</h2>
