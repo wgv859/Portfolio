@@ -27,6 +27,8 @@ public class World {
     List<Race> races;
     
     List<Character> characters;
+    
+    List<Continent> continents;
 
     public int getId() {
         return id;
@@ -84,16 +86,25 @@ public class World {
         this.characters = characters;
     }
 
+    public List<Continent> getContinents() {
+        return continents;
+    }
+
+    public void setContinents(List<Continent> continents) {
+        this.continents = continents;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + this.id;
-        hash = 13 * hash + Objects.hashCode(this.name);
-        hash = 13 * hash + Objects.hashCode(this.description);
-        hash = 13 * hash + Objects.hashCode(this.countries);
-        hash = 13 * hash + Objects.hashCode(this.cities);
-        hash = 13 * hash + Objects.hashCode(this.races);
-        hash = 13 * hash + Objects.hashCode(this.characters);
+        int hash = 7;
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + Objects.hashCode(this.name);
+        hash = 37 * hash + Objects.hashCode(this.description);
+        hash = 37 * hash + Objects.hashCode(this.countries);
+        hash = 37 * hash + Objects.hashCode(this.cities);
+        hash = 37 * hash + Objects.hashCode(this.races);
+        hash = 37 * hash + Objects.hashCode(this.characters);
+        hash = 37 * hash + Objects.hashCode(this.continents);
         return hash;
     }
 
@@ -130,7 +141,12 @@ public class World {
         if (!Objects.equals(this.characters, other.characters)) {
             return false;
         }
+        if (!Objects.equals(this.continents, other.continents)) {
+            return false;
+        }
         return true;
     }
+    
+    
     
 }
