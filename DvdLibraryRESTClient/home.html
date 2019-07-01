@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DVD Library</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+            
+            <!--First Load Form Header-->
+            <!--Visible on first load-->
+            <div id="topSectionOne" class="col-md-12" style="display: none">
+                    <br/><!--formatting purposes-->
+                    <form class="form-horizontal" style="" role="form" id="libraryForm">
+                        <div class="col-md-6">
+                            <!--Create DVD button-->
+                            <div class="form-group">
+                                <button type="button"
+                                        id="createButton"
+                                        class="btn btn-default">
+                                    Create DVD
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <!--Search button-->
+                            <div class="form-group">
+                                <button type="button"
+                                        id="searchButton"
+                                        class="btn btn-default">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <!--Drop down list-->
+                            <div class="form-group">
+                                <label for="search-category">
+                                    <select type="styled-select"
+                                            id="search-category"
+                                            placeholder="Search Category"
+                                            style="font-size: 12px; font-weight: 100; padding: 8px;" required>
+                                            <option value="0">Title</option>
+                                            <option value="1">Release Year</option>
+                                            <option value="2">Director Name</option>
+                                            <option value="3">Rating</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!--Entry box-->
+                            <div class="form-group">
+                                <input type="text"
+                                       class="form-control"
+                                       id="search-term"
+                                       style="border-style: ridge"
+                                       placeholder="Search Term" required/>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--end topSectionOne-->
+            
+            <!--Edit DVD Section Header-->
+            <!--Hidden at first load-->
+            <div id="topSectionTwo" class="col-md-12" style="display: none">
+                    <h1 id="editDvdHeader">Edit DVD: </h1>
+                    <!--fill in the dvd name using jQuery-->
+                </div><!--end topSectionTwo-->
+            
+            <!--Create DVD Section Header-->
+            <!--Hidden at first load-->
+            <div id="topSectionThree" class="col-md-12" style="display: none">
+                    <h1 id="CreateDvdHeader"> Create DVD </h1>
+                    <!--It's pretty much just a header-->
+                </div><!--end topSectionThree-->
+            
+            <!--Just holding a horizontal rule that separates top from bottom-->
+            <div id="formattingLine" class="col-md-12" >
+                    <hr><!--horizontal rule to break the page up-->
+            </div>
+            
+            <div id="errorMessageDiv" style="display: none">
+                <!--unordered list to display error messages-->
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <ul class="list-group" id="errorMessages"><li></li></ul>
+            </div>
+            
+            <!--Holds a table with DVD library information-->
+            <div id="bottomSectionOne" class="col-md-12" style="display: none">
+                    <!--Formatting purposes-->
+                    <table id="libraryTable" class="table table-bordered">
+                        <tr>
+                            <th width="25%"
+                                style="text-align: center">Title</th>
+                            <th width="25%"
+                                style="text-align: center">Release Date</th>
+                            <th width="25%"
+                                style="text-align: center">Director</th>
+                            <th width="10%"
+                                style="text-align: center">Rating</th>
+                            <th width="15%"
+                                style="text-align: center"></th>
+                        </tr>
+                        <!--
+                        We will fill the table body with rows through our jQuery calls.
+                        -->
+                        <tbody id="contentRows"></tbody>
+                    </table>
+                </div><!--end bottomSectionOne-->
+            
+            <!--Holds the form for the edit dvd option-->
+            <div id="bottomSectionTwo" class="col-md-12" style="display: none">
+                    <br/><!--formatting purposes-->
+                    <div id="editFormLabels" class="col-md-4">
+                        <h3>DVD Title: </h3>
+                        <br/>
+                        <h3>Release Year: </h3>
+                        <br/>
+                        <h3>Director: </h3>
+                        <br/>
+                        <h3>Rating: </h3>
+                        <br/>
+                        <h3>Notes: </h3>
+                        <div class="col-md-3">
+                                <button type="button"
+                                        id="cancelEditDvdButton"
+                                        style="form-group"
+                                        onclick="loadAllDvds()"
+                                        class="btn btn-default">
+                                    Cancel
+                                </button>
+                        </div>    
+                        <div class="col-md-1">
+                                <button type="button"
+                                        id="editDvdButton"
+                                        style="form-group"
+                                        class="btn btn-default">
+                                    <!--Need to work out an onclick function for this button, for now, just return to the original load-->
+                                    Edit DVD
+                                </button>
+                        </div>
+                        
+                    </div>
+                    <div id="editDvdForm" class="col-md-4">
+                        <form class="form-group" role="form" id="edit-form">
+                            <label for="edit-dvd-title">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="edit-dvd-title"
+                                   style="background-color: #f8f8f8"
+                                   placeholder="DVD Title" required/>
+                            <br/><!--formatting purposes-->
+                            
+                            <label for="edit-release-year">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="edit-release-year"
+                                   style="background-color: #f8f8f8"
+                                   pattern="[0-9][0-9][0-9][0-9]"
+                                   placeholder="Release Year" required/>
+                            <br/><!--formatting purposes-->
+                            
+                            <label for="edit-director">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="edit-director"
+                                   style="background-color: #f8f8f8"
+                                   placeholder="Director" required/>
+                            <br/><!--formatting purposes-->
+                            <br/><!--formatting purposes-->
+                            
+                            <select type="styled-select"
+                                    class="form-control"
+                                    id="edit-rating"
+                                    style="font-size: 12px; padding: 8px;" required>
+                                
+                                <option value="G">G</option>
+                                <option value="PG">PG</option>
+                                <option value="PG-13">PG-13</option>
+                                <option value="R">R</option>
+                            </select>
+                            <br/><!--formatting purposes-->
+                            
+                            <br/>
+                            <textarea class="form-control"
+                                      id="edit-notes"
+                                      rows="5"
+                                      resize="none"
+                                      style="background-color: #f8f8f8;" required>
+                            </textarea>
+                        </form>
+                    </div>
+                </div><!--end bottomSectionTwo-->
+            
+            <!--Holds the form for the add dvd option-->
+            <div id="bottomSectionThree" class="col-md-12" style="display: none">
+                    <br/><!--formatting purposes-->
+                    <div id="createFormLabels" class="col-md-4">
+                        <h3>DVD Title: </h3>
+                        <br/>
+                        <h3>Release Year: </h3>
+                        <br/>
+                        <h3>Director: </h3>
+                        <br/>
+                        <h3>Rating: </h3>
+                        <br/>
+                        <h3>Notes: </h3>
+                        <div class="col-md-3">
+                                <button type="button"
+                                        id="cancelCreateDvdButton"
+                                        style="form-group"
+                                        onclick="loadAllDvds()"
+                                        class="btn btn-default">
+                                    Cancel
+                                </button>
+                        </div>    
+                        <div class="col-md-1">
+                                <button type="button"
+                                        id="createDvdButton"
+                                        style="form-group"
+                                        class="btn btn-default">
+                                    <!--Need to work out an onclick function for this button, for now, just return to the original load-->
+                                    
+                                    Create DVD
+                                </button>
+                        </div>
+                            
+                    </div>
+                    <div id="createDvdForm" class="col-md-4">
+                        <form class="form-group" role="form" id="createForm">
+                            <label for="create-dvd-title">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="create-dvd-title"
+                                   style="background-color: #f8f8f8;"
+                                   placeholder="DVD Title" required/>
+                            <br/><!--formatting purposes-->
+                            
+                            <label for="create-release-year">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="create-release-year"
+                                   style="background-color: #f8f8f8"
+                                   pattern="[0-9][0-9][0-9][0-9]"
+                                   placeholder="Release Year" required/>
+                            <br/><!--formatting purposes-->
+                            
+                            <label for="create-director">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="create-director"
+                                   style="background-color: #f8f8f8"
+                                   placeholder="Director" required/>
+                            <br/><!--formatting purposes-->
+                            <br/><!--formatting purposes-->
+                            
+                            <select type="styled-select"
+                                    class="form-control"
+                                    id="create-rating"
+                                    style="font-size: 12 px; padding: 8px;" required>
+                                
+                                <option value="G">G</option>
+                                <option value="PG">PG</option>
+                                <option value="PG-13">PG-13</option>
+                                <option value="R">R</option>
+                            </select>
+                            <br/><!--formatting purposes-->
+                            
+                            <br/>
+                            <textarea class="form-control"
+                                      id="create-notes"
+                                      rows="5"
+                                      resize="none"
+                                      style="background-color: #f8f8f8;" required>
+                            </textarea>
+                        </form>
+                    </div>
+                </div><!--end bottomSectionThree-->
+            
+            <p id="movieIdNumber"></p>;
+        
+        </div><!--End container-->
+        
+        <!-- *** ALWAYS AT THE VERY BOTTOM OF THE PAGE *** -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>

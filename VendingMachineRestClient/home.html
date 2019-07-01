@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VENDING MACHINE</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <div class="container-fluid">
+                <div id="vendingMachineHeader">
+                    <h1 class="text-center">Vending Machine</h1>
+                </div>
+        </div>
+        <div id="errorMessageDiv" style="display: none">
+            <!--unordered list to display error messages-->
+            <ul class="list-group" id="errorMessages"><li></li></ul>
+        </div>
+        <div class="container-fluid">
+            <div id="horizontalRule">
+                <hr>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+            <div class="col-md-9">
+                <row id="items">
+                    <!--Filled dynamically with jQuery-->
+                </row>
+            </div>
+            
+            <!--Right side of the main body. Holds three forms: top, middle, and bottom-->
+            <div class="col-md-3">
+                <row class="col-md-12" id="rowOneRight">
+                    <form class="form" role="form" id="total-money-form">
+                        <div class="col-md-12">
+                            <label for="total-money" class="control-label col-md-12 text-center"> 
+                            Total $ In   
+                            </label>
+                        </div>
+                        <!---->
+                        <div class="col-md-12">
+                            <input type="num"
+                                   class="form-control"
+                                   id="total-money"/ readonly>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <button type="button"
+                                    onclick="addDollar()"
+                                    id="addDollarButton"
+                                    class="btn btn-default col-md-5"
+                                    style="margin-top: 10px; margin-right: 20px">Add Dollar</button>
+                            
+                            <button type="button"
+                                    onclick="addQuarter()"
+                                    id="addQuarterButton"
+                                    class="btn btn-default col-md-5"
+                                    style="margin-top: 10px; margin-left: 20px">Add Quarter</button>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <button type="button"
+                                    onclick="addDime()"
+                                    id="addDimeButton"
+                                    class="btn btn-default col-md-5"
+                                    style="margin-top: 10px; margin-right: 20px"> Add Dime</button>
+                        
+                            <button type="button"
+                                    onclick="addNickel()"
+                                    id="addNickelButton"
+                                    class="btn btn-default col-md-5"
+                                    style="margin-top: 10px; margin-left: 20px">Add Nickel</button>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        
+                    </form>
+                </row>
+                <row class="col-md-12" id="rowTwoRight">
+                    <form class="form" role="form" id="messages-and-item-form">
+                        <div class="col-md-12">
+                            <label for="messagesDisplay" class="control-label col-md-12 text-center">
+                            Messages
+                            </label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text"
+                                   class="form-control"
+                                   id="messagesDisplay"
+                                   style="margin-top: 10px"
+                                   placeholder="" readonly/>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <label for="itemDisplay" class="control-label col-md-2"
+                                   style="margin-top: 20px; margin-bottom: 10px">
+                                Item: 
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text"
+                                       class="form-control"
+                                       style="margin-top: 10px"
+                                       id="itemChoiceInput"
+                                       placeholder=" "/readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button"
+                                    id="makePurchaseButton"
+                                    style="margin-top: 10px"
+                                    class="btn btn-default col-md-12">Make Purchase</button>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                    </div>
+                    </form>
+                </row>
+                <row class="col-md-12" id="rowThreeRight">
+                    <form class="form" role="form" id="change-form">
+                        <div class="col-md-12">
+                            <label for="changeDisplay" class="control-label col-md-12 text-center">
+                            Change
+                            </label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text"
+                                   class="form-control"
+                                   id="change-display"
+                                   placeholder="$X.XX" readonly/>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button"
+                                    id="changeReturnButton"
+                                    style="margin-top: 10px"
+                                    class="btn btn-default col-md-12">Change return</button>
+                        </div>
+                    </form>
+                </row>
+            </div>
+        </div>
+        <div class="container-fluid">
+        
+        </div>
+        
+        
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>

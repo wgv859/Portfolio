@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Weather</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1 class="text-center">Weather Page</h1>
+            
+            <ul class="list-group" id="errorMessages"></ul><!--Somewhere to hold error messages-->
+            
+            <hr/><!--horizontal rule line break-->
+            
+            <div class="row">
+                <div id="formDiv"><!--Form to hold all of the user information we are requesting below-->
+                    <form class="form-horizontal" role="form" id="add-form">
+                        
+                        <div class="rowOne"><!--Zip Code Entry Box-->
+                            <label for="add-zip" class="col-md-4 control-label">
+                            Zipcode: 
+                            </label>
+                            <div class="col-md-2">
+                            <input type="text" 
+                                class="form-control" 
+                                id="add-zip" 
+                                pattern="[0-9][0-9][0-9][0-9][0-9] required"
+                                placeholder="Enter Zipcode" required/>
+                            </div>
+                        </div><!--input field-->
+                            
+                        <div class="rowOne"><!--Unit selection dropdown element-->
+                            <label for="add-unit" class="col-md-1 control-label">
+                            Units:
+                            </label>
+                            <div class="col-md-1">
+                            <select type="styled-select"
+                                    id="add-unit"
+                                    style="font-size: 16px; padding: 6px;" required>
+                                <option value="1">Imperial</option>
+                                <option value="2">Metric</option>
+                            </select>
+                            </div>
+                        </div><!--drop down menu-->
+                        
+                        <div class="rowOne"><!--Get Weather Button-->
+                            <div class="col-md-2">
+                            <button type="button"
+                                    id="getWeatherButton"
+                                    class="btn btn-default">
+                            Get Weather
+                            </button>
+                            </div>
+                        </div><!--button-->
+                    
+                    </form>
+                </div><!-- End formDiv -->
+            </div><!-- End first row div  -->
+            
+            <hr/><!--horizontal rule line break-->
+            
+            <div class="row"><!--NEEDS TO BE HIDDEN AT FIRST LOAD-->
+                <div class="col-md-12">
+                    <div id="currentConditionsDiv" style="display: none"><!-- Setting up the two Columns for Current conditions icon and description -->
+                        <h2 id="currentCityWeatherHeader"></h2>
+                        <div id="currentWeatherIconAndDescriptionSpot" class="col-md-4">
+                            
+                        </div><!--end Icon column div -->
+                        
+                        <div id="currentWeatherMoreInfoSpot" class="col-md-4">
+                            
+                        </div><!--end Description column div -->
+                    </div> <!---->
+                </div>
+            </div><!--end second row div-->
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="fiveDayForcastDiv" style="display: none">
+                        <h2>Five Day Forecast</h2>
+                        <div>
+                            <br/>
+                            <div id="dateOne" class="col-md-2">
+                            
+                            </div>
+                            <div id="dateTwo" class="col-md-2">
+                            
+                            </div>
+                            <div id="dateThree" class="col-md-2">
+                            
+                            </div>
+                            <div id="dateFour" class="col-md-2">
+                            
+                            </div>
+                            <div id="dateFive" class="col-md-2">
+                            
+                            </div>
+                            <!--<table id="contentTable" class="table table-hover">
+                                <tr>
+                                    <th id= "dateOne" width="20%"></th>
+                                    <th id= "dateTwo" width="20%"></th>
+                                    <th id= "dateThree" width="20%"></th>
+                                    <th id= "dateFour" width="20%"></th>
+                                    <th id= "dateFive" width="20%"></th>
+                                </tr>
+                                fill this table body with rows of data dynamically with jQuery
+                                <tbody id="fiveDayForcast">
+                                    
+                                </tbody>
+                            </table>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div><!-- End container Div -->
+        
+        <!-- ALWAYS AT THE END OF THE PAGE -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>
